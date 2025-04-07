@@ -11,8 +11,9 @@ class MapperTests {
 
     @Test
     fun `Should Map ExternalCourse To InternalCourse`() {
-        var cInternal: Any? = mapTo(courseExternal, CourseInternal::class)
-        var cInternal1: Any? = mapTo(courseExternal, CourseInternal::class)
+        val mapper = SimpleMapper.getMapperFor(CourseExt::class, CourseInternal::class)
+        var cInternal: Any? = mapper.mapTo(courseExternal)
+        var cInternal1: Any? = mapper.mapTo(courseExternal)
 
         assertNotNull(cInternal)
         assertEquals(CourseInternal::class, cInternal::class)
@@ -27,7 +28,8 @@ class MapperTests {
 
     @Test
     fun `Should Map InternalCourse To ExternalCourse`() {
-        var cExt = mapTo(courseInternal, CourseExt::class)
+        val mapper = SimpleMapper.getMapperFor(CourseInternal::class, CourseExt::class)
+        var cExt = mapper.mapTo(courseInternal)
         assertNotNull(cExt)
         assertEquals(CourseExt::class, cExt::class)
 
@@ -39,7 +41,8 @@ class MapperTests {
 
     @Test
     fun `Should Map CourseInternal To AnotherCourseExternal`() {
-        val anCoruseExt = mapTo(courseInternal, AnotherCourseExternal::class)
+        val mapper = SimpleMapper.getMapperFor(CourseInternal::class, AnotherCourseExternal::class)
+        val anCoruseExt = mapper.mapTo(courseInternal)
         assertNotNull(anCoruseExt)
         assertEquals(AnotherCourseExternal::class, anCoruseExt::class)
 
@@ -54,7 +57,8 @@ class MapperTests {
 
     @Test
     fun `Should Map CourseExt To AnotherCourseExternal`() {
-        var anCExt = mapTo(courseExternal, AnotherCourseExternal::class)
+        val mapper = SimpleMapper.getMapperFor(CourseExt::class, AnotherCourseExternal::class)
+        var anCExt = mapper.mapTo(courseExternal)
         assertNotNull(anCExt)
         assertEquals(AnotherCourseExternal::class, anCExt::class)
 
@@ -66,8 +70,10 @@ class MapperTests {
 
     @Test
     fun `Should Map CourseExternalWithTeacher To CourseInternalWithTeacher`() {
+        val mapper = SimpleMapper.getMapperFor(CourseExternalWithTeacher::class, CourseInternalWithTeacher::class)
+
         val courseExternalWithTeacher = CourseExternalWithTeacher("LAE", 4, "LEIC", TeacherExternal("Luis Falcão", "luis.falcao@isel.pt"))
-        var cIntWithTeacher = mapTo(courseExternalWithTeacher, CourseInternalWithTeacher::class)
+        var cIntWithTeacher = mapper.mapTo(courseExternalWithTeacher)
         assertNotNull(cIntWithTeacher)
         assertEquals(CourseInternalWithTeacher::class, cIntWithTeacher::class)
 

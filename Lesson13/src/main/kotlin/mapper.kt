@@ -9,49 +9,66 @@ import kotlin.reflect.full.primaryConstructor
 @Target(AnnotationTarget.VALUE_PARAMETER)
 annotation class PropName(val n: String)
 
-var typeNamePropMap: MutableMap<
-        Pair<KClass<*>, KClass<*>>,
-        Pair<KFunction<Any>, Map<KParameter, KProperty1<Any, Any?>>>> = mutableMapOf()
-
-fun mapTo(src: Any, dstRep: KClass<*>): Any {
-    val srcRep: KClass<*> = src::class
-
-    val srcDestMapping: Pair<KFunction<Any>, Map<KParameter, KProperty1<Any, Any?>>> =
-        typeNamePropMap.getOrElse(Pair(srcRep, dstRep))
-    {
-        println("### Obtaining map for $srcRep, $dstRep ")
-        val primaryConstructor: KFunction<Any> = dstRep.primaryConstructor!!
+data class MapperTypes(val srcRep: KClass<*>, val dstRep: KClass<*>)
+data class MapperReflection(val constructor: KFunction<Any>, val paramToProp: Map<KParameter, (Any)-> Any?>)
 
 
-        val mapKParamProp: Map<KParameter, KProperty1<Any, Any?>> =
-            primaryConstructor.parameters
-                .filter { !it.isOptional }
-                .associateWith { param ->
-                    val propName = param.findAnnotation<PropName>()?.n ?: param.name
-                    val prop: KProperty1<Any, Any?> = srcRep.declaredMemberProperties.find { it.name == propName } as KProperty1<Any, Any?>
-                    prop
+
+
+
+class SimpleMapper(val srcRep: KClass<*>, val dstRep: KClass<*>) {
+    companion object {
+        private val mappers: MutableMap<MapperTypes, SimpleMapper> = mutableMapOf()
+        fun getMapperFor(src: KClass<*>, dst: KClass<*>): SimpleMapper {
+            val mt = MapperTypes(src, dst)
+            return mappers.getOrElse(mt) {
+                val sm = SimpleMapper(src, dst)
+                mappers[mt] = sm
+                sm
+            }
+        }
+    }
+    val mapperReflection = MapperReflection(
+        dstRep.primaryConstructor!!,
+        dstRep.primaryConstructor!!.parameters
+            .filter { !it.isOptional }
+            .associateWith { param ->
+                val propName = param.findAnnotation<PropName>()?.n ?: param.name
+                val prop: KProperty1<Any, Any?> = srcRep.declaredMemberProperties.find { it.name == propName } as KProperty1<Any, Any?>
+                getParamValueGetter(prop, param)
+            }
+    )
+
+
+
+    public fun mapTo(src: Any): Any {
+        val srcRep: KClass<*> = src::class
+
+        val arguments: Map<KParameter, Any?> = mapperReflection.paramToProp.mapValues { (param, valueGetter) ->
+            valueGetter(src)
+        }
+        return mapperReflection.constructor.callBy(arguments)
+    }
+
+    inline fun getParamValueGetter(prop: KProperty1<Any, Any?>, param: KParameter): (Any) -> Any? {
+        val propValueGetter: (Any) -> Any? = { src ->  prop.call(src) }
+        return when (param.type.classifier) {
+            //return when (prop.returnType.classifier) {
+            Int::class -> propValueGetter
+            String::class -> propValueGetter
+
+            else -> {
+                { src  ->
+                    val value = propValueGetter(src)
+                    if(value != null) {
+                        val mapper: SimpleMapper = getMapperFor(value::class, param.type.classifier as KClass<*>)
+                        mapper.mapTo(value)
+                    } else
+                        null
                 }
-        val pair = Pair(primaryConstructor, mapKParamProp)
-        typeNamePropMap[Pair(srcRep, dstRep)] = pair
-        pair
-    }
 
-    val (primaryConstructor, mapKParamProp) = srcDestMapping
+            }
 
-    val arguments: Map<KParameter, Any?> = mapKParamProp.mapValues { (param, prop) ->
-        getParamValue(src, prop, param)
-        //prop.call(src)
-    }
-    return primaryConstructor.callBy(arguments)
-}
-
-inline fun getParamValue(src: Any, prop: KProperty1<Any, Any?>,param: KParameter) : Any? {
-    val value: Any? = prop.call(src)
-
-    //return when (param.type.classifier) {
-    return when (prop.returnType.classifier) {
-        Int::class -> value
-        String::class -> value
-        else -> if (value != null) mapTo(value, param.type.classifier as KClass<*>) else null
+        }
     }
 }
