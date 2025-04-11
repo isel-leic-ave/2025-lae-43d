@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    kotlin("jvm") version "2.1.20"
 }
 
 group = "isel.lae.i43d"
@@ -16,4 +16,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+kotlin {
+    jvmToolchain(22)
 }
