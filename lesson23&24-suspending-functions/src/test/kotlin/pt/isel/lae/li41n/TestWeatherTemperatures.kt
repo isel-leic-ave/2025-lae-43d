@@ -15,11 +15,11 @@ class TestWeatherTemperatures {
             .getSystemResource(weatherPath)
             .openStream()
             .reader()
-            .readLines()                    // List<String>
-            .eagerFilter { !it.startsWith('#') } // Filter comments
+             .readLines()                    // List<String>
+            .filter { !it.startsWith('#') } // Filter comments
             .drop(1)                        // Skip line: Not available
             .filterIndexed { index, _ -> index % 2 != 0 } // Filter hourly info
-            .eagerMap { it.fromCsvToWeather() }  // List<Weather>
+            .map { it.fromCsvToWeather() }  // List<Weather>
             .toList()
     private val weatherData = loadNaiveCsv()
 
@@ -32,13 +32,23 @@ class TestWeatherTemperatures {
 
     @Test
     fun countDistinctDescriptionsInCloudyDays() {
-        val cnt= weatherData
-            .eagerFilter { it.weatherDesc.contains("Cloudy", true) }  // Iterable<Weather>
-            .eagerMap { it.weatherDesc }    // Iterable<String>
-            .eagerDistinct()                     // Iterable<String>
-            .count()
-        assertEquals(2, cnt)
-
+        var count = 0
+        val distinctDescr = weatherData         // Iterable<Weather>
+            //.asSequence()
+            .filter {
+                ++count
+                it.weatherDesc.contains("cloudy", true)
+            }   // Iterable<Weather>
+            .asSequence()
+            .map {
+                ++count
+                it.weatherDesc
+            }    // Iterable<String>
+            .distinct()
+            //.count()
+            //.forEach { println(it) }
+        println(count)
+        //assertEquals(2, distinctDescr)
     }
 
     @Test
@@ -46,13 +56,13 @@ class TestWeatherTemperatures {
         var iters = 0
         val size =
             weatherData
-                .eagerMap {
+                .map {
                     iters++
                     it.weatherDesc
-                }.eagerFilter {
+                }.filter {
                     iters++
                     it.lowercase().contains("rain")
-                }.eagerDistinct()
+                }.distinct()
                 .count()
         assertEquals(5, size)
         assertEquals(70, iters)
@@ -63,13 +73,13 @@ class TestWeatherTemperatures {
         var iters = 0
         val size =
             weatherData
-                .eagerFilter {
+                .filter {
                     iters++
                     it.weatherDesc.lowercase().contains("rain")
-                }.eagerMap {
+                }.map {
                     iters++
                     it.weatherDesc
-                }.eagerDistinct()
+                }.distinct()
                 .count()
         assertEquals(5, size)
         assertEquals(48, iters)
@@ -83,7 +93,8 @@ class TestWeatherTemperatures {
                 .filter {  // List<Weather>
                     iters++
                     it.windspeedKmph > 22
-                }.eagerMap {    // List<String>
+                }
+                .map {    // List<String>
                     iters++
                     it.weatherDesc
                 }
@@ -101,7 +112,7 @@ class TestWeatherTemperatures {
                 .filter {      // Sequence<Weather>
                     iters++
                     it.windspeedKmph > 22
-                }.lazyMap {        // Sequence<String>
+                }.map {        // Sequence<String>
                     iters++
                     it.weatherDesc
                 }
@@ -122,7 +133,7 @@ class TestWeatherTemperatures {
                 .filter {
                     iters++
                     it.windspeedKmph > 22
-                }.lazyMap {
+                }.map {
                     iters++
                     it.weatherDesc
                 }.first()
@@ -139,10 +150,10 @@ class TestWeatherTemperatures {
                 .filter {
                     iters++
                     it.weatherDesc.lowercase().contains("rain")
-                }.lazyMap {
+                }.map {
                     iters++
                     it.weatherDesc
-                }.lazyDistinct()
+                }.distinct()
                 .onEach { println(it) }
                 .count()
         assertEquals(5, size)
@@ -151,10 +162,34 @@ class TestWeatherTemperatures {
 
 
     @Test
+    fun testFilterLazy() {
+        val seq =
+            listOf(1, 2, 3, 4, 5, null,  6, 7, 8, 9)
+                .filter { it != null && it % 2 == 0 }
+
+        var iter = seq.iterator()
+        iter.hasNext()
+        iter.hasNext()
+        iter.hasNext()
+        assertEquals(2,iter.next())
+        assertEquals(4,iter.next())
+        iter.hasNext()
+        assertEquals(6,iter.next())
+        iter.hasNext()
+        iter.hasNext()
+        iter.hasNext()
+        iter.hasNext()
+        assertEquals(8,iter.next())
+
+
+    }
+
+
+    @Test
     fun testDistinctSimple() {
         val seq =
             sequenceOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
-                .lazyDistinct()
+                .distinct()
         val iter = seq.iterator()
         assertEquals(1, iter.next())
         iter.hasNext()
@@ -174,7 +209,7 @@ class TestWeatherTemperatures {
     fun testDistinctOnNulls() {
         val actual =
             sequenceOf(1, 2, 4, 2, 2, 5, null, null, 3, 7, 9, null, null)
-                .lazyDistinct()
+                .distinct()
 
         assertContentEquals(
             sequenceOf(1, 2, 4, 5, null, 3, 7, 9),

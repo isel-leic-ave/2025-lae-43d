@@ -1,0 +1,334 @@
+Classfile /Users/luisfalcao/Library/CloudStorage/OneDrive-InstitutoSuperiordeEngenhariadeLisboa/ISEL/Disciplinas/2024_2025/2024-2025VerLAE/Repositories/2025-lae-43d-LF/lesson22-sequences-and-generators/build/classes/kotlin/main/pt/isel/SequencesKt$genValuesLazy$1.class
+  Last modified May 19, 2025; size 3309 bytes
+  SHA-256 checksum 60295673fc5208df77cb7477915f368ac3a127e341571b0b761df0ec317daad8
+  Compiled from "sequences.kt"
+final class pt.isel.SequencesKt$genValuesLazy$1 extends kotlin.coroutines.jvm.internal.RestrictedSuspendLambda implements kotlin.jvm.functions.Function2<kotlin.sequences.SequenceScope<? super java.lang.Integer>, kotlin.coroutines.Continuation<? super kotlin.Unit>, java.lang.Object>
+  minor version: 0
+  major version: 65
+  flags: (0x0030) ACC_FINAL, ACC_SUPER
+  this_class: #2                          // pt/isel/SequencesKt$genValuesLazy$1
+  super_class: #5                         // kotlin/coroutines/jvm/internal/RestrictedSuspendLambda
+  interfaces: 1, fields: 2, methods: 5, attributes: 5
+Constant pool:
+    #1 = Utf8               pt/isel/SequencesKt$genValuesLazy$1
+    #2 = Class              #1            // pt/isel/SequencesKt$genValuesLazy$1
+    #3 = Utf8               Lkotlin/coroutines/jvm/internal/RestrictedSuspendLambda;Lkotlin/jvm/functions/Function2<Lkotlin/sequences/SequenceScope<-Ljava/lang/Integer;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;Ljava/lang/Object;>;
+    #4 = Utf8               kotlin/coroutines/jvm/internal/RestrictedSuspendLambda
+    #5 = Class              #4            // kotlin/coroutines/jvm/internal/RestrictedSuspendLambda
+    #6 = Utf8               kotlin/jvm/functions/Function2
+    #7 = Class              #6            // kotlin/jvm/functions/Function2
+    #8 = Utf8               <init>
+    #9 = Utf8               (Lkotlin/coroutines/Continuation;)V
+   #10 = Utf8               (Lkotlin/coroutines/Continuation<-Lpt/isel/SequencesKt$genValuesLazy$1;>;)V
+   #11 = Utf8               (ILkotlin/coroutines/Continuation;)V
+   #12 = NameAndType        #8:#11        // "<init>":(ILkotlin/coroutines/Continuation;)V
+   #13 = Methodref          #5.#12        // kotlin/coroutines/jvm/internal/RestrictedSuspendLambda."<init>":(ILkotlin/coroutines/Continuation;)V
+   #14 = Utf8               this
+   #15 = Utf8               Lpt/isel/SequencesKt$genValuesLazy$1;
+   #16 = Utf8               $completion
+   #17 = Utf8               Lkotlin/coroutines/Continuation;
+   #18 = Utf8               invokeSuspend
+   #19 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #20 = Utf8               Lkotlin/coroutines/jvm/internal/DebugMetadata;
+   #21 = Utf8               f
+   #22 = Utf8               sequences.kt
+   #23 = Utf8               l
+   #24 = Integer            23
+   #25 = Utf8               i
+   #26 = Utf8               s
+   #27 = Utf8               n
+   #28 = Utf8               m
+   #29 = Utf8               c
+   #30 = Utf8               pt.isel.SequencesKt$genValuesLazy$1
+   #31 = Utf8               kotlin/coroutines/intrinsics/IntrinsicsKt
+   #32 = Class              #31           // kotlin/coroutines/intrinsics/IntrinsicsKt
+   #33 = Utf8               getCOROUTINE_SUSPENDED
+   #34 = Utf8               ()Ljava/lang/Object;
+   #35 = NameAndType        #33:#34       // getCOROUTINE_SUSPENDED:()Ljava/lang/Object;
+   #36 = Methodref          #32.#35       // kotlin/coroutines/intrinsics/IntrinsicsKt.getCOROUTINE_SUSPENDED:()Ljava/lang/Object;
+   #37 = Utf8               label
+   #38 = Utf8               I
+   #39 = NameAndType        #37:#38       // label:I
+   #40 = Fieldref           #2.#39        // pt/isel/SequencesKt$genValuesLazy$1.label:I
+   #41 = Utf8               kotlin/ResultKt
+   #42 = Class              #41           // kotlin/ResultKt
+   #43 = Utf8               throwOnFailure
+   #44 = Utf8               (Ljava/lang/Object;)V
+   #45 = NameAndType        #43:#44       // throwOnFailure:(Ljava/lang/Object;)V
+   #46 = Methodref          #42.#45       // kotlin/ResultKt.throwOnFailure:(Ljava/lang/Object;)V
+   #47 = Utf8               L$0
+   #48 = Utf8               Ljava/lang/Object;
+   #49 = NameAndType        #47:#48       // L$0:Ljava/lang/Object;
+   #50 = Fieldref           #2.#49        // pt/isel/SequencesKt$genValuesLazy$1.L$0:Ljava/lang/Object;
+   #51 = Utf8               kotlin/sequences/SequenceScope
+   #52 = Class              #51           // kotlin/sequences/SequenceScope
+   #53 = Utf8               *Adding 1
+   #54 = String             #53           // *Adding 1
+   #55 = Utf8               java/lang/System
+   #56 = Class              #55           // java/lang/System
+   #57 = Utf8               out
+   #58 = Utf8               Ljava/io/PrintStream;
+   #59 = NameAndType        #57:#58       // out:Ljava/io/PrintStream;
+   #60 = Fieldref           #56.#59       // java/lang/System.out:Ljava/io/PrintStream;
+   #61 = Utf8               java/io/PrintStream
+   #62 = Class              #61           // java/io/PrintStream
+   #63 = Utf8               println
+   #64 = NameAndType        #63:#44       // println:(Ljava/lang/Object;)V
+   #65 = Methodref          #62.#64       // java/io/PrintStream.println:(Ljava/lang/Object;)V
+   #66 = Utf8               kotlin/coroutines/jvm/internal/Boxing
+   #67 = Class              #66           // kotlin/coroutines/jvm/internal/Boxing
+   #68 = Utf8               boxInt
+   #69 = Utf8               (I)Ljava/lang/Integer;
+   #70 = NameAndType        #68:#69       // boxInt:(I)Ljava/lang/Integer;
+   #71 = Methodref          #67.#70       // kotlin/coroutines/jvm/internal/Boxing.boxInt:(I)Ljava/lang/Integer;
+   #72 = Utf8               kotlin/coroutines/Continuation
+   #73 = Class              #72           // kotlin/coroutines/Continuation
+   #74 = Utf8               yield
+   #75 = Utf8               (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+   #76 = NameAndType        #74:#75       // yield:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+   #77 = Methodref          #52.#76       // kotlin/sequences/SequenceScope.yield:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+   #78 = Utf8               kotlin/Unit
+   #79 = Class              #78           // kotlin/Unit
+   #80 = Utf8               INSTANCE
+   #81 = Utf8               Lkotlin/Unit;
+   #82 = NameAndType        #80:#81       // INSTANCE:Lkotlin/Unit;
+   #83 = Fieldref           #79.#82       // kotlin/Unit.INSTANCE:Lkotlin/Unit;
+   #84 = Utf8               java/lang/IllegalStateException
+   #85 = Class              #84           // java/lang/IllegalStateException
+   #86 = Utf8               call to \'resume\' before \'invoke\' with coroutine
+   #87 = String             #86           // call to \'resume\' before \'invoke\' with coroutine
+   #88 = Utf8               (Ljava/lang/String;)V
+   #89 = NameAndType        #8:#88        // "<init>":(Ljava/lang/String;)V
+   #90 = Methodref          #85.#89       // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+   #91 = Utf8               $this$sequence
+   #92 = Utf8               Lkotlin/sequences/SequenceScope;
+   #93 = Utf8               $result
+   #94 = Utf8               java/lang/Object
+   #95 = Class              #94           // java/lang/Object
+   #96 = Utf8               create
+   #97 = Utf8               (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+   #98 = Utf8               (Ljava/lang/Object;Lkotlin/coroutines/Continuation<*>;)Lkotlin/coroutines/Continuation<Lkotlin/Unit;>;
+   #99 = NameAndType        #8:#9         // "<init>":(Lkotlin/coroutines/Continuation;)V
+  #100 = Methodref          #2.#99        // pt/isel/SequencesKt$genValuesLazy$1."<init>":(Lkotlin/coroutines/Continuation;)V
+  #101 = Utf8               value
+  #102 = Utf8               invoke
+  #103 = Utf8               (Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+  #104 = Utf8               (Lkotlin/sequences/SequenceScope<-Ljava/lang/Integer;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;)Ljava/lang/Object;
+  #105 = NameAndType        #96:#97       // create:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+  #106 = Methodref          #2.#105       // pt/isel/SequencesKt$genValuesLazy$1.create:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+  #107 = NameAndType        #18:#19       // invokeSuspend:(Ljava/lang/Object;)Ljava/lang/Object;
+  #108 = Methodref          #2.#107       // pt/isel/SequencesKt$genValuesLazy$1.invokeSuspend:(Ljava/lang/Object;)Ljava/lang/Object;
+  #109 = Utf8               p1
+  #110 = Utf8               p2
+  #111 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #112 = NameAndType        #102:#103     // invoke:(Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+  #113 = Methodref          #2.#112       // pt/isel/SequencesKt$genValuesLazy$1.invoke:(Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+  #114 = Utf8               Lkotlin/Metadata;
+  #115 = Utf8               mv
+  #116 = Integer            2
+  #117 = Integer            1
+  #118 = Integer            0
+  #119 = Utf8               k
+  #120 = Integer            3
+  #121 = Utf8               xi
+  #122 = Integer            48
+  #123 = Utf8               d1
+  #124 = Utf8               \u0000\u000e\n\u0000\n\u0002\u0010\u0002\n\u0002\u0018\u0002\n\u0002\u0010\b\u0010\u0000\u001a\u00020\u0001*\b\u0012\u0004\u0012\u00020\u00030\u0002H\n
+  #125 = Utf8               d2
+  #126 = Utf8               <anonymous>
+  #127 = Utf8
+  #128 = Utf8               pt/isel/SequencesKt
+  #129 = Class              #128          // pt/isel/SequencesKt
+  #130 = Utf8               genValuesLazy
+  #131 = Utf8               ()Lkotlin/sequences/Sequence;
+  #132 = NameAndType        #130:#131     // genValuesLazy:()Lkotlin/sequences/Sequence;
+  #133 = Utf8               Code
+  #134 = Utf8               LocalVariableTable
+  #135 = Utf8               Signature
+  #136 = Utf8               StackMapTable
+  #137 = Utf8               LineNumberTable
+  #138 = Utf8               InnerClasses
+  #139 = Utf8               EnclosingMethod
+  #140 = Utf8               SourceFile
+  #141 = Utf8               RuntimeVisibleAnnotations
+{
+  int label;
+    descriptor: I
+    flags: (0x0000)
+
+  private java.lang.Object L$0;
+    descriptor: Ljava/lang/Object;
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+
+  pt.isel.SequencesKt$genValuesLazy$1(kotlin.coroutines.Continuation<? super pt.isel.SequencesKt$genValuesLazy$1>);
+    descriptor: (Lkotlin/coroutines/Continuation;)V
+    flags: (0x0000)
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: iconst_2
+         2: aload_1
+         3: invokespecial #13                 // Method kotlin/coroutines/jvm/internal/RestrictedSuspendLambda."<init>":(ILkotlin/coroutines/Continuation;)V
+         6: return
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lpt/isel/SequencesKt$genValuesLazy$1;
+            0       7     1 $completion   Lkotlin/coroutines/Continuation;
+    Signature: #10                          // (Lkotlin/coroutines/Continuation<-Lpt/isel/SequencesKt$genValuesLazy$1;>;)V
+
+  public final java.lang.Object invokeSuspend(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Ljava/lang/Object;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=5, locals=4, args_size=2
+         0: invokestatic  #36                 // Method kotlin/coroutines/intrinsics/IntrinsicsKt.getCOROUTINE_SUSPENDED:()Ljava/lang/Object;
+         3: astore_3
+         4: aload_0
+         5: getfield      #40                 // Field label:I
+         8: tableswitch   { // 0 to 1
+                       0: 32
+                       1: 77
+                 default: 87
+            }
+        32: aload_1
+        33: invokestatic  #46                 // Method kotlin/ResultKt.throwOnFailure:(Ljava/lang/Object;)V
+        36: aload_0
+        37: getfield      #50                 // Field L$0:Ljava/lang/Object;
+        40: checkcast     #52                 // class kotlin/sequences/SequenceScope
+        43: astore_2
+        44: ldc           #54                 // String *Adding 1
+        46: getstatic     #60                 // Field java/lang/System.out:Ljava/io/PrintStream;
+        49: swap
+        50: invokevirtual #65                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+        53: aload_2
+        54: iconst_1
+        55: invokestatic  #71                 // Method kotlin/coroutines/jvm/internal/Boxing.boxInt:(I)Ljava/lang/Integer;
+        58: aload_0
+        59: checkcast     #73                 // class kotlin/coroutines/Continuation
+        62: aload_0
+        63: iconst_1
+        64: putfield      #40                 // Field label:I
+        67: invokevirtual #77                 // Method kotlin/sequences/SequenceScope.yield:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+        70: dup
+        71: aload_3
+        72: if_acmpne     82
+        75: aload_3
+        76: areturn
+        77: aload_1
+        78: invokestatic  #46                 // Method kotlin/ResultKt.throwOnFailure:(Ljava/lang/Object;)V
+        81: aload_1
+        82: pop
+        83: getstatic     #83                 // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        86: areturn
+        87: new           #85                 // class java/lang/IllegalStateException
+        90: dup
+        91: ldc           #87                 // String call to \'resume\' before \'invoke\' with coroutine
+        93: invokespecial #90                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        96: athrow
+      StackMapTable: number_of_entries = 4
+        frame_type = 253 /* append */
+          offset_delta = 32
+          locals = [ top, class java/lang/Object ]
+        frame_type = 44 /* same */
+        frame_type = 68 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Object ]
+        frame_type = 4 /* same */
+      LineNumberTable:
+        line 21: 3
+        line 22: 44
+        line 23: 53
+        line 21: 75
+        line 32: 82
+        line 21: 87
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           44       9     2 $this$sequence   Lkotlin/sequences/SequenceScope;
+           53      17     2 $this$sequence   Lkotlin/sequences/SequenceScope;
+            0      97     0  this   Lpt/isel/SequencesKt$genValuesLazy$1;
+           36      51     1 $result   Ljava/lang/Object;
+
+  public final kotlin.coroutines.Continuation<kotlin.Unit> create(java.lang.Object, kotlin.coroutines.Continuation<?>);
+    descriptor: (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=4, args_size=3
+         0: new           #2                  // class pt/isel/SequencesKt$genValuesLazy$1
+         3: dup
+         4: aload_2
+         5: invokespecial #100                // Method "<init>":(Lkotlin/coroutines/Continuation;)V
+         8: astore_3
+         9: aload_3
+        10: aload_1
+        11: putfield      #50                 // Field L$0:Ljava/lang/Object;
+        14: aload_3
+        15: checkcast     #73                 // class kotlin/coroutines/Continuation
+        18: areturn
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lpt/isel/SequencesKt$genValuesLazy$1;
+            0      19     1 value   Ljava/lang/Object;
+            0      19     2 $completion   Lkotlin/coroutines/Continuation;
+    Signature: #98                          // (Ljava/lang/Object;Lkotlin/coroutines/Continuation<*>;)Lkotlin/coroutines/Continuation<Lkotlin/Unit;>;
+
+  public final java.lang.Object invoke(kotlin.sequences.SequenceScope<? super java.lang.Integer>, kotlin.coroutines.Continuation<? super kotlin.Unit>);
+    descriptor: (Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokevirtual #106                // Method create:(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+         6: checkcast     #2                  // class pt/isel/SequencesKt$genValuesLazy$1
+         9: getstatic     #83                 // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        12: invokevirtual #108                // Method invokeSuspend:(Ljava/lang/Object;)Ljava/lang/Object;
+        15: areturn
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lpt/isel/SequencesKt$genValuesLazy$1;
+            0      16     1    p1   Lkotlin/sequences/SequenceScope;
+            0      16     2    p2   Lkotlin/coroutines/Continuation;
+    Signature: #104                         // (Lkotlin/sequences/SequenceScope<-Ljava/lang/Integer;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;)Ljava/lang/Object;
+
+  public java.lang.Object invoke(java.lang.Object, java.lang.Object);
+    descriptor: (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: checkcast     #52                 // class kotlin/sequences/SequenceScope
+         5: aload_2
+         6: checkcast     #73                 // class kotlin/coroutines/Continuation
+         9: invokevirtual #113                // Method invoke:(Lkotlin/sequences/SequenceScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+        12: areturn
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lpt/isel/SequencesKt$genValuesLazy$1;
+            0      13     1    p1   Ljava/lang/Object;
+            0      13     2    p2   Ljava/lang/Object;
+}
+InnerClasses:
+  static final #2;                        // class pt/isel/SequencesKt$genValuesLazy$1
+EnclosingMethod: #129.#132              // pt.isel.SequencesKt.genValuesLazy
+Signature: #3                           // Lkotlin/coroutines/jvm/internal/RestrictedSuspendLambda;Lkotlin/jvm/functions/Function2<Lkotlin/sequences/SequenceScope<-Ljava/lang/Integer;>;Lkotlin/coroutines/Continuation<-Lkotlin/Unit;>;Ljava/lang/Object;>;
+SourceFile: "sequences.kt"
+RuntimeVisibleAnnotations:
+  0: #20(#21=s#22,#23=[I#24],#25=[],#26=[],#27=[],#28=s#18,#29=s#30)
+    kotlin.coroutines.jvm.internal.DebugMetadata(
+      f="sequences.kt"
+      l=[23]
+      i=[]
+      s=[]
+      n=[]
+      m="invokeSuspend"
+      c="pt.isel.SequencesKt$genValuesLazy$1"
+    )
+  1: #114(#115=[I#116,I#117,I#118],#119=I#120,#121=I#122,#123=[s#124],#125=[s#126,s#127,s#92,s#127])
+    kotlin.Metadata(
+      mv=[2,1,0]
+      k=3
+      xi=48
+      d1=["\u0000\u000e\n\u0000\n\u0002\u0010\u0002\n\u0002\u0018\u0002\n\u0002\u0010\b\u0010\u0000\u001a\u00020\u0001*\b\u0012\u0004\u0012\u00020\u00030\u0002H\n"]
+      d2=["<anonymous>","","Lkotlin/sequences/SequenceScope;",""]
+    )
